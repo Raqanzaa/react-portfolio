@@ -9,8 +9,7 @@ const AboutSection = () => {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center text-transparent dark:text-white mb-16 relative">
-          About <span className="text-primary">Me</span>
-          <span className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 h-1 w-16 bg-primary rounded-full animate-pulse"></span>
+          About <span className="text-blue-700">Me</span>
         </h2>
 
         <div className="flex flex-col md:flex-row items-center gap-12">
@@ -19,7 +18,7 @@ const AboutSection = () => {
               <img
                 src={profileMain}
                 alt="Profile"
-                className="w-full h-full object-cover rounded-full border-4 border-primary z-10 relative"
+                className="w-full h-full object-cover rounded-full border-4 border-blue-700 z-10 relative"
               />
             </div>
           </div>
