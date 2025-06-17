@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import profileMain from "../assets/profile.png";
-import TrueFocusText from "./text-animation/TrueFocusText.jsx";
+import TrueFocusText from "./animation/TrueFocusText.jsx";
 
 const HomeSection = () => {
   return (
@@ -25,13 +25,14 @@ const HomeSection = () => {
         </div>
 
         <p className="text-md md:text-lg mb-8">
-          A proficient developer who strategically leverages AI as a coding
-          partner. While I deeply understand programming fundamentals, I use AI
-          tools to accelerate development, generate ideas, and verify solutions
-          - always maintaining full control over the final implementation.
+          A passionate web developer specializing in building responsive,
+          user-friendly experiences. I strategically integrate AI tools into my
+          development process to boost productivity, solve complex problems, and
+          prototype faster - without compromising on code quality or attention
+          to detail.
         </p>
 
-        <div className="flex flex-wrap gap-2 sm:gap-4">
+        <div className="flex flex-wrap mb-4 sm:mb-8 gap-2 sm:gap-4">
           <a
             href="https://www.linkedin.com/in/a-rozaq/"
             className="px-4 py-2 sm:px-6 sm:py-2.5 md:px-8 md:py-3 border-2 border-gray-200 text-gray-200 font-semibold rounded-lg hover:bg-gray-600 hover:text-dark transition text-sm sm:text-base"
@@ -46,7 +47,7 @@ const HomeSection = () => {
           </a>
         </div>
 
-        <div className="mt-6 sm:mt-12 flex gap-3 sm:gap-4">
+        <div className="flex gap-3 sm:gap-4">
           <a
             href="https://github.com/Raqanzaa"
             target="_blank"
