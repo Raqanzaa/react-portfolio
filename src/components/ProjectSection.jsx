@@ -7,224 +7,157 @@ import LaundryBlues from "../assets/Laundry-Blues.png";
 import PijatIn from "../assets/Pijatin.png";
 import AmbilPaket from "../assets/Ambil-Paket.png";
 import PustakaSyabab from "../assets/Pustaka-Syabab.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
 
 const ProjectSection = () => {
+  const projects = [
+    {
+      img: PressureSampah,
+      title: "Website Pressure Sampah",
+      desc: "Pressure Sampah (Percentage of Recycling Success) is an application to track and assess how effective waste recycling is.",
+      link: "https://github.com/Raqanzaa/Pressure-Sampah",
+    },
+    {
+      img: Emoney,
+      title: "Website Keuangan Pribadi",
+      desc: "A web-based personal finance application designed to help users manage and track their finances efficiently.",
+      link: "https://github.com/Raqanzaa/Aplikasi-Keuangan-Pribadi",
+    },
+    {
+      img: EndySport,
+      title: "Web E-commerse UMKM Sepatu",
+      desc: "A simple website to help growing small businesses (UMKM) as a platform for online sales.",
+      link: "https://github.com/Raqanzaa/tugasBootstrap1",
+    },
+    {
+      img: BrandGuidelines,
+      title: "Brand Guidelines Design",
+      desc: "Created logo designs and brand guidelines for the Pustaka Syabab bookstore.",
+      link: "https://drive.google.com/drive/folders/1lbJq-LpKGeU08042w-sykOI8Wcj7DRpR?usp=sharing",
+    },
+    {
+      img: LaundryBlues,
+      title: "Website Laundry Blues",
+      desc: "LaundryBlues is a web application for ordering laundry pick-up and delivery services online, making it easy for customers to do laundry without leaving home.",
+      link: "https://drive.google.com/drive/folders/1lbJq-LpKGeU08042w-sykOI8Wcj7DRpR?usp=sharing",
+    },
+    {
+      img: PijatIn,
+      title: "Website Pijat.in",
+      desc: "Pijat.in is a web application for booking massage services online, connecting professional therapists with customers who need health treatments.",
+      link: "https://drive.google.com/drive/folders/1lbJq-LpKGeU08042w-sykOI8Wcj7DRpR?usp=sharing",
+    },
+    {
+      img: AmbilPaket,
+      title: "Website Ambil Paket",
+      desc: "AmbilPaket is a web application for package delivery, similar to courier services like JNE, providing convenience in shipping goods to various destinations.",
+      link: "https://drive.google.com/drive/folders/1lbJq-LpKGeU08042w-sykOI8Wcj7DRpR?usp=sharing",
+    },
+    {
+      img: PustakaSyabab,
+      title: "E-commerce Pustaka Syabab",
+      desc: "PustakaSyabab is a web-based e-commerce application for online book sales, offering a wide collection of literature with an easy and fast purchasing process.",
+      link: "https://drive.google.com/drive/folders/1lbJq-LpKGeU08042w-sykOI8Wcj7DRpR?usp=sharing",
+    },
+  ];
+  const [activeCard, setActiveCard] = useState(null);
+
+  const handleCardClick = (index) => {
+    setActiveCard(activeCard === index ? null : index);
+  };
+  const ProjectCard = ({ project, isMobile, isActive, onClick }) => {
+    return (
+      <div
+        className={`relative overflow-hidden rounded-lg shadow-lg ${
+          isMobile
+            ? "bg-white dark:bg-transparent mx-auto w-full"
+            : "group bg-white dark:bg-transparent"
+        }`}
+        style={{ height: "250px" }}
+        onClick={isMobile ? onClick : undefined}
+      >
+        <h3 className="text-md text-center font-medium p-3 text-gray-800 dark:text-white">
+          {project.title}
+        </h3>
+        <img
+          src={project.img}
+          alt={project.title}
+          className="w-full h-40 md:h-48 object-cover"
+        />
+        <div
+          className={`absolute inset-0 bg-black/70 flex flex-col items-center justify-center p-4 transition-opacity duration-300 ${
+            isMobile
+              ? isActive
+                ? "opacity-100"
+                : "opacity-0"
+              : "opacity-0 group-hover:opacity-100"
+          }`}
+        >
+          <p className="text-gray-300 text-xs md:text-sm mb-4 text-center">
+            {project.desc}
+          </p>
+          <a
+            href={project.link}
+            className={`${
+              isMobile ? "px-3 py-1.5" : "px-4 py-2"
+            } bg-blue-600 text-white rounded-md text-sm md:text-base hover:bg-blue-700 transition-colors`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+          >
+            See Detail
+          </a>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <section
       id="project"
-      className="md:min-h-screen flex items-center justify-between px-6 md:px-9 py-6 md:py-20"
+      className="md:min-h-screen flex items-center px-4 md:px-9 py-6 md:py-20"
     >
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-center text-transparent dark:text-white mb-16 relative">
+      <div className="max-w-7xl mx-auto w-full">
+        <h2 className="text-3xl md:text-4xl font-bold text-center dark:text-white mb-8 md:mb-16">
           My <span className="text-blue-700">Project</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-transparent">
-            <img
-              src={PressureSampah}
-              alt="Raqanzaa-pressure-sampah"
-              className="w-full h-48 object-cover"
-            />
-            <div className="absolute inset-0 bg-black/70 bg-opacity-70 flex flex-col items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h4 className="text-xl font-bold text-white mb-2">
-                Website Pressure Sampah
-              </h4>
-              <p className="text-gray-300 text-sm mb-4">
-                Presur Sampah (Presentase Keberhasilan Daur Ulang Sampah) adalah
-                aplikasi untuk melacak dan menilai seberapa efektif daur ulang
-                sampah.
-              </p>
-              <a
-                href="https://github.com/Raqanzaa/Pressure-Sampah"
-                className="text-white hover:text-blue-400 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="bx bx-link-external text-2xl"></i>
-              </a>
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {projects.map((project, index) => (
+            <div key={`desktop-${index}`} className="group">
+              <ProjectCard project={project} isMobile={false} />
             </div>
-          </div>
+          ))}
+        </div>
 
-          <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-transparent">
-            <img
-              src={Emoney}
-              alt="Raqanzaa-emoney"
-              className="w-full h-48 object-cover"
-            />
-            <div className="absolute inset-0 bg-black/70 bg-opacity-70 flex flex-col items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h4 className="text-xl font-bold text-white mb-2">
-                Website Keuangan Pribadi
-              </h4>
-              <p className="text-gray-300 text-sm mb-4">
-                Aplikasi keuangan pribadi berbasis website, yang dirancang untuk
-                membantu pengguna mengelola dan melacak keuangan mereka secara
-                efisien.
-              </p>
-              <a
-                href="https://github.com/Raqanzaa/Aplikasi-Keuangan-Pribadi"
-                className="text-white hover:text-blue-400 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="bx bx-link-external text-2xl"></i>
-              </a>
-            </div>
-          </div>
-
-          <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-transparent">
-            <img
-              src={EndySport}
-              alt="Raqanzaa-endy-utama"
-              className="w-full h-48 object-cover"
-            />
-            <div className="absolute inset-0 bg-black/70 bg-opacity-70 flex flex-col items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h4 className="text-xl font-bold text-white mb-2">
-                Web e-commerse UMKM Sepatu
-              </h4>
-              <p className="text-gray-300 text-sm mb-4">
-                Membuat website website sederhana guna membantu umkm yang sedang
-                berkembang untuk digunakan sebagai sarana penjualan secara
-                online.
-              </p>
-              <a
-                href="https://github.com/Raqanzaa/tugasBootstrap1"
-                className="text-white hover:text-blue-400 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="bx bx-link-external text-2xl"></i>
-              </a>
-            </div>
-          </div>
-
-          <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-transparent">
-            <img
-              src={BrandGuidelines}
-              alt="Raqanzaa-Bguidelines"
-              className="w-full h-48 object-cover"
-            />
-            <div className="absolute inset-0 bg-black/70 bg-opacity-70 flex flex-col items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h4 className="text-xl font-bold text-white mb-2">
-                Desain Brand Guidelines
-              </h4>
-              <p className="text-gray-300 text-sm mb-4">
-                Membuat desain logo dan juga brand guidelines untuk toko buku
-                pustaka syabab
-              </p>
-              <a
-                href="https://drive.google.com/drive/folders/1lbJq-LpKGeU08042w-sykOI8Wcj7DRpR?usp=sharing"
-                className="text-white hover:text-blue-400 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="bx bx-link-external text-2xl"></i>
-              </a>
-            </div>
-          </div>
-
-          <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-transparent">
-            <img
-              src={LaundryBlues}
-              alt="Laundry Blues"
-              className="w-full h-48 object-cover"
-            />
-            <div className="absolute inset-0 bg-black/70 bg-opacity-70 flex flex-col items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h4 className="text-xl font-bold text-white mb-2">
-                Website Laundry Blues
-              </h4>
-              <p className="text-gray-300 text-sm mb-4">
-                LaundryBlues adalah aplikasi web yang digunakan untuk pemesanan
-                layanan antar-jemput laundry secara online, memudahkan pelanggan
-                dalam mencuci pakaian tanpa perlu keluar rumah.
-              </p>
-              <a
-                href="https://drive.google.com/drive/folders/1lbJq-LpKGeU08042w-sykOI8Wcj7DRpR?usp=sharing"
-                className="text-white hover:text-blue-400 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="bx bx-link-external text-2xl"></i>
-              </a>
-            </div>
-          </div>
-
-          <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-transparent">
-            <img
-              src={PijatIn}
-              alt="Pijat.in"
-              className="w-full h-48 object-cover"
-            />
-            <div className="absolute inset-0 bg-black/70 bg-opacity-70 flex flex-col items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h4 className="text-xl font-bold text-white mb-2">
-                Website Pijat.in
-              </h4>
-              <p className="text-gray-300 text-sm mb-4">
-                pijat.in adalah aplikasi web yang digunakan untuk pemesanan atau
-                booking layanan pijat secara online, menghubungkan terapis
-                profesional dengan pelanggan yang membutuhkan perawatan
-                kesehatan.
-              </p>
-              <a
-                href="https://drive.google.com/drive/folders/1lbJq-LpKGeU08042w-sykOI8Wcj7DRpR?usp=sharing"
-                className="text-white hover:text-blue-400 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="bx bx-link-external text-2xl"></i>
-              </a>
-            </div>
-          </div>
-          <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-transparent">
-            <img
-              src={AmbilPaket}
-              alt="Ambil Paket"
-              className="w-full h-48 object-cover"
-            />
-            <div className="absolute inset-0 bg-black/70 bg-opacity-70 flex flex-col items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h4 className="text-xl font-bold text-white mb-2">
-                Website Ambil Paket
-              </h4>
-              <p className="text-gray-300 text-sm mb-4">
-                AmbilPaket adalah aplikasi web yang digunakan untuk pengantaran
-                paket dengan konsep serupa jasa ekspedisi seperti JNE,
-                memberikan kemudahan dalam pengiriman barang ke berbagai tujuan.
-              </p>
-              <a
-                href="https://drive.google.com/drive/folders/1lbJq-LpKGeU08042w-sykOI8Wcj7DRpR?usp=sharing"
-                className="text-white hover:text-blue-400 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="bx bx-link-external text-2xl"></i>
-              </a>
-            </div>
-          </div>
-          <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-transparent">
-            <img
-              src={PustakaSyabab}
-              alt="Pustaka Syabab"
-              className="w-full h-48 object-cover"
-            />
-            <div className="absolute inset-0 bg-black/70 bg-opacity-70 flex flex-col items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h4 className="text-xl font-bold text-white mb-2">
-                Website E-commerce Pustaka Syabab
-              </h4>
-              <p className="text-gray-300 text-sm mb-4">
-                pustakasyabab adalah aplikasi web e-commerce khusus penjualan
-                buku online, menyediakan berbagai koleksi literatur dengan
-                proses pembelian yang mudah dan cepat.
-              </p>
-              <a
-                href="https://drive.google.com/drive/folders/1lbJq-LpKGeU08042w-sykOI8Wcj7DRpR?usp=sharing"
-                className="text-white hover:text-blue-400 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="bx bx-link-external text-2xl"></i>
-              </a>
-            </div>
-          </div>
+        <div className="md:hidden px-2">
+          <Swiper
+            slidesPerView={1.2}
+            centeredSlides={true}
+            spaceBetween={20}
+            pagination={{ clickable: true }}
+            modules={[Pagination]}
+            className="w-full"
+            breakpoints={{
+              640: {
+                slidesPerView: 1.5,
+              },
+            }}
+          >
+            {projects.map((project, index) => (
+              <SwiperSlide key={`mobile-${index}`}>
+                <ProjectCard
+                  project={project}
+                  isMobile={true}
+                  isActive={activeCard === index}
+                  onClick={() => handleCardClick(index)}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>
