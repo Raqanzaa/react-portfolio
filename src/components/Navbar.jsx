@@ -7,7 +7,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'project', 'journey', 'skills', 'contact'];
-      const scrollPosition = window.scrollY + 120;
+      const scrollPosition = window.scrollY + 50;
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -33,7 +33,7 @@ const Navbar = () => {
     const element = document.getElementById(section);
     if (element) {
       window.scrollTo({
-        top: element.offsetTop - 80,
+        top: element.offsetTop,
         behavior: 'smooth'
       });
     }
