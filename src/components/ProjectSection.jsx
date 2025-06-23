@@ -71,11 +71,10 @@ const ProjectSection = () => {
   const ProjectCard = ({ project, isMobile, isActive, onClick }) => {
     return (
       <div
-        className={`relative overflow-hidden rounded-lg shadow-lg ${
-          isMobile
-            ? "bg-white dark:bg-transparent mx-auto w-full"
-            : "group bg-white dark:bg-transparent"
-        }`}
+        className={`relative overflow-hidden rounded-lg shadow-lg ${isMobile
+          ? "bg-white dark:bg-transparent mx-auto w-full"
+          : "group bg-white dark:bg-transparent"
+          }`}
         style={{ height: "250px" }}
         onClick={isMobile ? onClick : undefined}
       >
@@ -85,25 +84,23 @@ const ProjectSection = () => {
         <img
           src={project.img}
           alt={project.title}
-          className="w-full h-40 md:h-48 object-cover"
+          className="w-full h-40 md:h-48 object-contain"
         />
         <div
-          className={`absolute inset-0 bg-black/70 flex flex-col items-center justify-center p-4 transition-opacity duration-300 ${
-            isMobile
-              ? isActive
-                ? "opacity-100"
-                : "opacity-0"
-              : "opacity-0 group-hover:opacity-100"
-          }`}
+          className={`absolute inset-0 bg-black/70 flex flex-col items-center justify-center p-4 transition-opacity duration-300 ${isMobile
+            ? isActive
+              ? "opacity-100"
+              : "opacity-0"
+            : "opacity-0 group-hover:opacity-100"
+            }`}
         >
           <p className="text-gray-300 text-xs md:text-sm mb-4 text-center">
             {project.desc}
           </p>
           <a
             href={project.link}
-            className={`${
-              isMobile ? "px-3 py-1.5" : "px-4 py-2"
-            } bg-blue-600 text-white rounded-md text-sm md:text-base hover:bg-blue-700 transition-colors`}
+            className={`${isMobile ? "px-3 py-1.5" : "px-4 py-2"
+              } bg-blue-600 text-white rounded-md text-sm md:text-base hover:bg-blue-700 transition-colors`}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
@@ -118,7 +115,7 @@ const ProjectSection = () => {
   return (
     <section
       id="project"
-      className="md:min-h-screen flex items-center px-4 md:px-9 py-6 md:py-20"
+      className="min-h-screen flex items-center px-4 md:px-9 py-6 md:py-20"
     >
       <div className="max-w-7xl mx-auto w-full">
         <h2 className="text-3xl md:text-4xl font-bold text-center dark:text-white mb-8 md:mb-16">

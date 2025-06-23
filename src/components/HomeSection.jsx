@@ -17,10 +17,10 @@ const HomeSection = () => {
           <TrueFocusText
             sentence="Web Developer"
             manualMode={false}
-            blurAmount={5}
+            blurAmount={3}
             borderColor="gray"
-            animationDuration={1}
-            pauseBetweenAnimations={1}
+            animationDuration={0.5}
+            pauseBetweenAnimations={1.5}
           />
         </div>
 
