@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar.jsx";
 import HomeSection from "./components/HomeSection.jsx";
 import AboutSection from "./components/AboutSection.jsx";
 import ProjectSection from "./components/ProjectSection.jsx";
+import JourneySection from "./components/JourneySection.jsx";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <HomeSection />
         <AboutSection />
         <ProjectSection />
+        <JourneySection />
       </div>
     </div>
   );

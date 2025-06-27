@@ -18,19 +18,19 @@ const ProjectSection = () => {
       img: PressureSampah,
       title: "Website Pressure Sampah",
       desc: "Pressure Sampah (Percentage of Recycling Success) is an application to track and assess how effective waste recycling is.",
-      link: "https://github.com/Raqanzaa/Pressure-Sampah",
+      link: "https://medium.com/@ahmadrozaq34/pressure-sampah-sistem-monitoring-efektivitas-daur-ulang-sampah-b3e7f75f15f3",
     },
     {
       img: Emoney,
       title: "Website Keuangan Pribadi",
       desc: "A web-based personal finance application designed to help users manage and track their finances efficiently.",
-      link: "https://github.com/Raqanzaa/Aplikasi-Keuangan-Pribadi",
+      link: "https://medium.com/@ahmadrozaq34/e-money-aplikasi-manajemen-keuangan-pribadi-ef527e520498",
     },
     {
       img: EndySport,
       title: "Web E-commerse UMKM Sepatu",
       desc: "A simple website to help growing small businesses (UMKM) as a platform for online sales.",
-      link: "https://github.com/Raqanzaa/tugasBootstrap1",
+      link: "https://medium.com/@ahmadrozaq34/endy-sport-website-company-profile-umkm-sepatu-olahraga-9b5b3173b1bc",
     },
     {
       img: BrandGuidelines,
@@ -60,7 +60,7 @@ const ProjectSection = () => {
       img: PustakaSyabab,
       title: "E-commerce Pustaka Syabab",
       desc: "PustakaSyabab is a web-based e-commerce application for online book sales, offering a wide collection of literature with an easy and fast purchasing process.",
-      link: "https://drive.google.com/drive/folders/1lbJq-LpKGeU08042w-sykOI8Wcj7DRpR?usp=sharing",
+      link: "https://medium.com/@ahmadrozaq34/e-commerce-pustaka-syabab-3a6e652f21f5",
     },
   ];
   const [activeCard, setActiveCard] = useState(null);
@@ -100,7 +100,7 @@ const ProjectSection = () => {
           <a
             href={project.link}
             className={`${isMobile ? "px-3 py-1.5" : "px-4 py-2"
-              } bg-blue-600 text-white rounded-md text-sm md:text-base hover:bg-blue-700 transition-colors`}
+              } text-gray-200 border-2 border-gray-200 rounded-md text-sm md:text-base hover:bg-gray-600 transition-colors`}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
@@ -119,7 +119,7 @@ const ProjectSection = () => {
     >
       <div className="max-w-7xl mx-auto w-full">
         <h2 className="text-3xl md:text-4xl font-bold text-center dark:text-white mb-8 md:mb-16">
-          My <span className="text-blue-700">Project</span>
+          My <span className="text-teal-400">Project</span>
         </h2>
 
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">

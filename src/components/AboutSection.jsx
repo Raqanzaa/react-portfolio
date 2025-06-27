@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import profileMain from "../assets/profile.png";
+import ProfileCard from './animation/ProfileCard.jsx'
 
 const AboutSection = () => {
   return (
@@ -9,18 +10,23 @@ const AboutSection = () => {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center text-transparent dark:text-white mb-16 relative">
-          About <span className="text-blue-700">Me</span>
+          About <span className="text-teal-400">Me</span>
         </h2>
 
         <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="relative w-64 h-64 md:w-80 md:h-80 flex-shrink-0 group">
-            <div className="relative w-full h-full bg-gray-400/50 rounded-full border-2 border-gray-200 overflow-hidden group">
-              <img
-                src={profileMain}
-                alt="Profile"
-                className="w-full h-full object-cover rounded-full border-4 border-blue-700 z-10 relative"
-              />
-            </div>
+          <div className="w-full md:w-1/3 flex justify-center mb-8 md:mb-0">
+
+            <ProfileCard
+              name=""
+              title=""
+              handle="Raqanzaa"
+              status="Online"
+              contactText="Contact Me"
+              avatarUrl={profileMain}
+              showUserInfo={false}
+              enableTilt={false}
+              onContactClick={() => console.log('Contact clicked')}
+            />
           </div>
           <div className="flex-1">
             <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
