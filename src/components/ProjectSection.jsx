@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import BrandGuidelines from "../assets/Brand-Guidelines.png";
 import Emoney from "../assets/E-money.png";
 import EndySport from "../assets/Endy-Sport.png";
@@ -63,20 +65,33 @@ const ProjectSection = () => {
       link: "https://medium.com/@ahmadrozaq34/e-commerce-pustaka-syabab-3a6e652f21f5",
     },
   ];
+
   const [activeCard, setActiveCard] = useState(null);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: false, // Allow animations to repeat
+      mirror: true
+    });
+  }, []);
 
   const handleCardClick = (index) => {
     setActiveCard(activeCard === index ? null : index);
   };
+
   const ProjectCard = ({ project, isMobile, isActive, onClick }) => {
     return (
       <div
         className={`relative overflow-hidden rounded-lg shadow-lg ${isMobile
-          ? "bg-white dark:bg-transparent mx-auto w-full"
-          : "group bg-white dark:bg-transparent"
+            ? "bg-white dark:bg-transparent mx-auto w-full"
+            : "group bg-white dark:bg-transparent"
           }`}
         style={{ height: "250px" }}
         onClick={isMobile ? onClick : undefined}
+        data-aos="flip-up"
+        data-aos-once="false"
       >
         <h3 className="text-md text-center font-medium p-3 text-gray-800 dark:text-white">
           {project.title}
@@ -88,10 +103,10 @@ const ProjectSection = () => {
         />
         <div
           className={`absolute inset-0 bg-black/70 flex flex-col items-center justify-center p-4 transition-opacity duration-300 ${isMobile
-            ? isActive
-              ? "opacity-100"
-              : "opacity-0"
-            : "opacity-0 group-hover:opacity-100"
+              ? isActive
+                ? "opacity-100"
+                : "opacity-0"
+              : "opacity-0 group-hover:opacity-100"
             }`}
         >
           <p className="text-gray-300 text-xs md:text-sm mb-4 text-center">
@@ -116,44 +131,79 @@ const ProjectSection = () => {
     <section
       id="project"
       className="min-h-screen flex items-center px-4 md:px-9 py-6 md:py-20"
+      data-aos="fade-in"
     >
       <div className="max-w-7xl mx-auto w-full">
-        <h2 className="text-3xl md:text-4xl font-bold text-center dark:text-white mb-8 md:mb-16">
+        <h2
+          className="text-3xl md:text-4xl font-bold text-center dark:text-white mb-8 md:mb-16"
+          data-aos="fade-down"
+          data-aos-delay="100"
+          data-aos-once="false"
+        >
           My <span className="text-teal-400">Project</span>
         </h2>
 
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        {/* Desktop Grid */}
+        <div
+          className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+          data-aos="zoom-in"
+          data-aos-delay="200"
+          data-aos-once="false"
+        >
           {projects.map((project, index) => (
-            <div key={`desktop-${index}`} className="group">
+            <div
+              key={`desktop-${index}`}
+              className="group"
+              data-aos="flip-up"
+              data-aos-delay={300 + (index * 100)}
+              data-aos-once="false"
+            >
               <ProjectCard project={project} isMobile={false} />
             </div>
           ))}
         </div>
 
-        <div className="md:hidden px-2">
+        {/* Mobile Swiper */}
+        <div
+          className="md:hidden px-2"
+          data-aos="fade-up"
+          data-aos-delay="200"
+          data-aos-once="false"
+        >
           <Swiper
-            slidesPerView={1.2}
-            centeredSlides={true}
+            slidesPerView={1}
             spaceBetween={20}
             pagination={{ clickable: true }}
             modules={[Pagination]}
             className="w-full"
-            breakpoints={{
-              640: {
-                slidesPerView: 1.5,
-              },
-            }}
           >
-            {projects.map((project, index) => (
-              <SwiperSlide key={`mobile-${index}`}>
-                <ProjectCard
-                  project={project}
-                  isMobile={true}
-                  isActive={activeCard === index}
-                  onClick={() => handleCardClick(index)}
-                />
-              </SwiperSlide>
-            ))}
+            {Array.from({ length: Math.ceil(projects.length / 2) }).map((_, index) => {
+              const pair = [
+                projects[index * 2],
+                projects[index * 2 + 1]
+              ].filter(Boolean);
+
+              return (
+                <SwiperSlide
+                  key={`mobile-pair-${index}`}
+                  data-aos="fade-up"
+                  data-aos-delay={300 + (index * 100)}
+                  data-aos-once="false"
+                >
+                  <div className="grid grid-cols-1 gap-4">
+                    {pair.map((project, subIndex) => (
+                      <ProjectCard
+                        key={`mobile-${index * 2 + subIndex}`}
+                        project={project}
+                        isMobile={true}
+                        isActive={activeCard === (index * 2 + subIndex)}
+                        onClick={() => handleCardClick(index * 2 + subIndex)}
+                      />
+                    ))}
+                  </div>
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
         </div>
       </div>

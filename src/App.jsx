@@ -4,6 +4,8 @@ import HomeSection from "./components/HomeSection.jsx";
 import AboutSection from "./components/AboutSection.jsx";
 import ProjectSection from "./components/ProjectSection.jsx";
 import JourneySection from "./components/JourneySection.jsx";
+import SkillSection from "./components/SkillSection.jsx";
+import ContactSection from "./components/ContactSection.jsx";
 import "./App.css";
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
         <AboutSection />
         <ProjectSection />
         <JourneySection />
+        <SkillSection />
+        <ContactSection />
       </div>
     </div>
   );

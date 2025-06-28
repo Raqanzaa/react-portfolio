@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const journeyData = [
     {
@@ -52,19 +54,50 @@ const journeyData = [
 ];
 
 const JourneySection = () => {
+    useEffect(() => {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: false, // Allow animations to repeat
+            mirror: true
+        });
+    }, []);
+
     return (
         <section
             id="journey"
             className="min-h-screen flex items-center justify-center px-4 md:px-9 py-6 md:py-20"
+            data-aos="fade-in"
         >
             <div className="w-full max-w-6xl mx-auto">
-                <h2 className="text-3xl md:text-4xl font-bold text-center text-transparent dark:text-white mb-10 md:mb-16 relative">
+                <h2
+                    className="text-3xl md:text-4xl font-bold text-center text-transparent dark:text-white mb-10 md:mb-16 relative"
+                    data-aos="fade-down"
+                    data-aos-delay="100"
+                    data-aos-once="false"
+                >
                     <span className="text-teal-400">My</span> Journey
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-                    {journeyData.map((section) => (
-                        <div key={section.title}>
-                            <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-teal-400">
+
+                <div
+                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                    data-aos-once="false"
+                >
+                    {journeyData.map((section, sectionIndex) => (
+                        <div
+                            key={section.title}
+                            data-aos="fade-right"
+                            data-aos-delay={300 + (sectionIndex * 100)}
+                            data-aos-once="false"
+                        >
+                            <h3
+                                className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-teal-400"
+                                data-aos="fade-right"
+                                data-aos-delay={400 + (sectionIndex * 100)}
+                                data-aos-once="false"
+                            >
                                 {section.title}
                             </h3>
                             <ul className="space-y-4 md:space-y-6">
@@ -72,6 +105,9 @@ const JourneySection = () => {
                                     <li
                                         key={idx}
                                         className="bg-gray-600 rounded-lg shadow p-4 border-l-4 border-teal-400"
+                                        data-aos="zoom-in"
+                                        data-aos-delay={500 + (sectionIndex * 100) + (idx * 50)}
+                                        data-aos-once="false"
                                     >
                                         <div className="text-xs md:text-sm text-gray-200 mb-1">
                                             {item.year}
@@ -83,7 +119,6 @@ const JourneySection = () => {
                                             {item.position}
                                         </div>
                                         <div className="text-gray-200">{item.description}</div>
-                                        {/* Tampilkan link jika ada (khusus sertifikasi) */}
                                         {item.link && (
                                             <a
                                                 href={item.link}
