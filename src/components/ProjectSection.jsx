@@ -168,7 +168,7 @@ const ProjectSection = () => {
           className="md:hidden px-2"
           data-aos="fade-up"
           data-aos-delay="200"
-          data-aos-once="false"
+          data-aos-once="true"
         >
           <Swiper
             slidesPerView={1}
@@ -186,9 +186,6 @@ const ProjectSection = () => {
               return (
                 <SwiperSlide
                   key={`mobile-pair-${index}`}
-                  data-aos="fade-up"
-                  data-aos-delay={300 + (index * 100)}
-                  data-aos-once="false"
                 >
                   <div className="grid grid-cols-1 gap-4">
                     {pair.map((project, subIndex) => (
