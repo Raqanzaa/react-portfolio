@@ -175,7 +175,7 @@ const ContactSection = () => {
                             </div>
                             <div>
                                 <h3 className="text-lg font-medium text-white mb-1">Call Me</h3>
-                                <a href="tel:+6281234567890" className="text-gray-300 hover:text-teal-400 transition">
+                                <a href="https://wa.me/083849826116" className="text-gray-300 hover:text-teal-400 transition">
                                     +62 838-4982-6116
                                 </a>
                             </div>
